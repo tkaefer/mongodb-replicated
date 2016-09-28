@@ -1,5 +1,6 @@
 FROM mongo:latest
 
+RUN groupadd -r mongodb && useradd -r -g mongodb mongodb
 
 MAINTAINER Tobias Kaefer <tobias@tkaefer.de>
 
@@ -30,16 +31,11 @@ RUN set -x \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-
 EXPOSE 27017
 
-ADD root /
+ADD root/usr/local /usr/local
 
 RUN touch /etc/mongod.conf && chown mongodb:0 /etc/mongod.conf && /usr/local/libexec/fix-permissions /etc/mongod.conf
 
-RUN mkdir -p /data/db /data/configdb /data/tmp
-
-VOLUME /data/db /data/configdb /data/tmp
-
-ENTRYPOINT ["/usr/local/bin/container-entrypoint"]
-CMD ["run-mongod"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["mongod"]
