@@ -43,7 +43,5 @@ RUN mkdir -p /data/db /data/configdb \
 
 VOLUME /data/db /data/configdb
 
-USER mongodb
-
 ENTRYPOINT ["/usr/local/bin/container-entrypoint"]
 CMD ["run-mongod"]
