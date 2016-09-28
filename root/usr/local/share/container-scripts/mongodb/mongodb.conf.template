@@ -1,0 +1,25 @@
+# mongodb.conf
+
+port = ${CONTAINER_PORT}
+
+# Set this value to designate a directory for the mongod instance to store its data.
+# Default: /var/lib/mongodb/data
+dbpath = ${MONGODB_DATADIR}
+
+# Disable data file preallocation. Default: true
+# only for mounted data directory from older MongoDB server
+noprealloc = ${MONGODB_NOPREALLOC}
+
+# Set MongoDB to use a smaller default data file size. Default: true
+# only for mounted data directory from older MongoDB server
+smallfiles = ${MONGODB_SMALLFILES}
+
+# Runs MongoDB in a quiet mode that attempts to limit the amount of output.
+# Default: true
+quiet = ${MONGODB_QUIET}
+
+# Disable the HTTP interface (Defaults to localhost:28017).
+nohttpinterface = true
+
+# Size to use (in MB) for replication op log (default 5% of disk space)
+oplogSize = 64
