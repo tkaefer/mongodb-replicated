@@ -37,10 +37,9 @@ ADD root /
 
 RUN touch /etc/mongod.conf && chown mongodb:0 /etc/mongod.conf && /usr/local/libexec/fix-permissions /etc/mongod.conf
 
-RUN mkdir -p /data/db /data/configdb \
-  && touch /data/.address
+RUN mkdir -p /data/db /data/configdb /data/tmp
 
-VOLUME /data/db /data/configdb
+VOLUME /data/db /data/configdb /data/tmp
 
 ENTRYPOINT ["/usr/local/bin/container-entrypoint"]
 CMD ["run-mongod"]
