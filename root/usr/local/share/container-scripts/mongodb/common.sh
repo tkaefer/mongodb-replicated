@@ -15,7 +15,7 @@ export MONGODB_SMALLFILES=${MONGODB_SMALLFILES:-true}
 export MONGODB_QUIET=${MONGODB_QUIET:-true}
 
 MONGODB_CONFIG_PATH=/etc/mongod.conf
-MONGODB_KEYFILE_PATH= "/tmp/keyfile"
+MONGODB_KEYFILE_PATH=/tmp/keyfile
 
 # Constants used for waiting
 readonly MAX_ATTEMPTS=60
