@@ -1,7 +1,5 @@
 FROM mongo:latest
 
-RUN groupadd -r mongodb && useradd -r -g mongodb mongodb
-
 MAINTAINER Tobias Kaefer <tobias@tkaefer.de>
 
 # MongoDB image inspired by https://github.com/sclorg/mongodb-container
