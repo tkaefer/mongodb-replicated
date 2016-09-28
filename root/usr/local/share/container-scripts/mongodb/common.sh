@@ -15,7 +15,7 @@ export MONGODB_SMALLFILES=${MONGODB_SMALLFILES:-true}
 export MONGODB_QUIET=${MONGODB_QUIET:-true}
 
 MONGODB_CONFIG_PATH=/etc/mongod.conf
-MONGODB_KEYFILE_PATH=/tmp/keyfile
+MONGODB_KEYFILE_PATH=/data/additional/keyfile
 
 # Constants used for waiting
 readonly MAX_ATTEMPTS=60
@@ -23,7 +23,7 @@ readonly SLEEP_TIME=1
 
 # container_addr returns the current container external IP address
 function container_addr() {
-  echo -n $(cat /tmp/.address)
+  echo -n $(cat /data/additional/.address)
 }
 
 # mongo_addr returns the IP:PORT of the currently running MongoDB instance
@@ -37,7 +37,7 @@ function cache_container_addr() {
   echo -n "=> Waiting for container IP address ..."
   local i
   for i in $(seq "$MAX_ATTEMPTS"); do
-    if ip -oneline -4 addr show up scope global | grep -Eo '[0-9]{,3}(\.[0-9]{,3}){3}' > /tmp/.address; then
+    if ip -oneline -4 addr show up scope global | grep -Eo '[0-9]{,3}(\.[0-9]{,3}){3}' > /data/additional/.address; then
       echo " $(mongo_addr)"
       return 0
     fi
