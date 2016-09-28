@@ -23,7 +23,7 @@ readonly SLEEP_TIME=1
 
 # container_addr returns the current container external IP address
 function container_addr() {
-  echo -n $(cat ${HOME}/tmp/.address)
+  echo -n $(cat /tmp/.address)
 }
 
 # mongo_addr returns the IP:PORT of the currently running MongoDB instance
@@ -37,7 +37,7 @@ function cache_container_addr() {
   echo -n "=> Waiting for container IP address ..."
   local i
   for i in $(seq "$MAX_ATTEMPTS"); do
-    if ip -oneline -4 addr show up scope global | grep -Eo '[0-9]{,3}(\.[0-9]{,3}){3}' > "${HOME}"/tmp/.address; then
+    if ip -oneline -4 addr show up scope global | grep -Eo '[0-9]{,3}(\.[0-9]{,3}){3}' > /tmp/.address; then
       echo " $(mongo_addr)"
       return 0
     fi
