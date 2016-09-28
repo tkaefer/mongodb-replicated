@@ -38,8 +38,7 @@ ADD root /
 RUN touch /etc/mongod.conf && chown mongodb:0 /etc/mongod.conf && /usr/local/libexec/fix-permissions /etc/mongod.conf
 
 RUN mkdir -p /data/db /data/configdb \
-  && touch /data/.address \
-	&& chown -R mongodb:mongodb /data
+  && touch /data/.address
 
 VOLUME /data/db /data/configdb
 
